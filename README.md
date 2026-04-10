@@ -1,5 +1,4 @@
-#
-<img src="https://upload.wikimedia.org/wikipedia/en/9/96/Duke_%28Java_mascot%29.png" width="120"/>Gestor de Estoque
+#Gestor de Estoque
 Este projeto tem como objetivo desenvolver um software programado em Java que possa ser utilizado para administrar estoques, sendo uma ferramenta que busca ajudar lojas e empresas a organizar e gerir seu estoque de produtos. 
 
 ### O projeto possuirá as seguintes funções:

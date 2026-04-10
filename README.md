@@ -1,4 +1,5 @@
 <img src="https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg" width="80"/>
+
 # Gestor de Estoque
 
 Este projeto tem como objetivo desenvolver um software programado em Java que possa ser utilizado para administrar estoques, sendo uma ferramenta que busca ajudar lojas e empresas a organizar e gerir seu estoque de produtos. 

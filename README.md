@@ -11,5 +11,5 @@ Relatórios, incluindo lista de preços de todos os produtos e balanço financei
 Lance-HL / Lucas Moreira Trevisan / RA: (10726111032)\
 Knabben19 / Vinícius Knabben Andrade / RA: (1072610738)
 <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Kali-dragon-icon.svg" width="40"/>
-<img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png" width="25"/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png" width="40"/>
 ***

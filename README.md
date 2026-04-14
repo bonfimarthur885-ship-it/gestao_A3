@@ -18,7 +18,8 @@ henriquetrichess / Henrique da Silva Trichês / RA: (10726110681)\
 bonfimarthur885-ship-it / Arthur Feldberg Bonfim/ RA: (10726112398)\ 
 <img width="100" height="200" alt="image" src="https://github.com/user-attachments/assets/24ae63e3-62af-4005-9626-fcd3e675a090" />
 
-Knabben19 / Vinícius Knabben Andrade / RA: (1072610738)
+Knabben19 / Vinícius Knabben Andrade / RA: (1072610738)\
+lucassantanaxx04-cpu / Lucas Santana da Silva / RA: (1072618931)
 <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Kali-dragon-icon.svg" width="40"/>
 <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png" width="40"/>
 ***

@@ -43,7 +43,6 @@ public class Principal {
 
                 while (continuar.equalsIgnoreCase("S")) {
 
-                    //campos de entrada - Agora usando o layout para manter o tamanho
                     String nome = JOptionPane.showInputDialog(layout("INCLUSÃO DE PRODUTO", "NOME:"));
                     String preco = JOptionPane.showInputDialog(layout("INCLUSÃO DE PRODUTO", "PREÇO:"));
                     String unidade = JOptionPane.showInputDialog(layout("INCLUSÃO DE PRODUTO", "UNIDADE:"));
@@ -64,11 +63,10 @@ public class Principal {
                         JOptionPane.showMessageDialog(null, layout("SISTEMA", "Cadastro cancelado."));
                     }
 
-                    //nova alteração
                     continuar = JOptionPane.showInputDialog(layout("INCLUSÃO", "NOVA INCLUSÃO (S/N)?"));
 
                     if (continuar == null || continuar.equalsIgnoreCase("N")) {
-                        break; //volta pro menu cadastro
+                        break;
                     }
                 }
             }
@@ -76,11 +74,10 @@ public class Principal {
             // >>> AQUI COMEÇA A TELA 1.1.2 
             if (MENUCD == 2) { //ALTERAÇÃO
 
-                String continuar = "S"; //controla repetição
+                String continuar = "S";
 
                 while (continuar.equalsIgnoreCase("S")) {
 
-                    //campos de entrada
                     String nome = JOptionPane.showInputDialog(layout("ALTERAÇÃO DE PRODUTO", "NOME:"));
                     String preco = JOptionPane.showInputDialog(layout("ALTERAÇÃO DE PRODUTO", "PREÇO:"));
                     String unidade = JOptionPane.showInputDialog(layout("ALTERAÇÃO DE PRODUTO", "UNIDADE:"));
@@ -261,9 +258,9 @@ public class Principal {
         }
 
         // >>> AQUI COMEÇA A TELA 1.3
-        if (MENUPP == 3) { //REAJUSTE DE PREÇOS
+        if (MENUPP == 3) {
 
-            String continuar = "S"; //controla repetição da tela
+            String continuar = "S";
 
             while (continuar.equalsIgnoreCase("S")) {
 
@@ -302,6 +299,45 @@ public class Principal {
             }
         }
 
+        // >>> AQUI COMEÇA A TELA 1.4
+        if (MENUPP == 4) { //RELATÓRIOS
+
+            int MENUREL = -1;
+
+            while (MENUREL != 0) {
+                String MENURELATORIOS = JOptionPane.showInputDialog(
+                    layout("RELATÓRIOS",
+                    "1 - RELATÓRIO DE PRODUTOS<br>"
+                  + "2 - RELATÓRIO DE MOVIMENTAÇÕES<br>"
+                  + "0 - RETORNAR")
+                );
+
+                if (MENURELATORIOS == null) break;
+                MENUREL = Integer.parseInt(MENURELATORIOS);
+
+                // >>> TELA 1.4.1
+                if (MENUREL == 1) {
+                    JOptionPane.showMessageDialog(null,
+                        layout("RELATÓRIO DE PRODUTOS",
+                        "LISTA DE PRODUTOS:<br>"
+                      + "- Produto A<br>"
+                      + "- Produto B<br>"
+                      + "- Produto C")
+                    );
+                }
+
+                // >>> TELA 1.4.2
+                if (MENUREL == 2) {
+                    JOptionPane.showMessageDialog(null,
+                        layout("RELATÓRIO DE MOVIMENTAÇÕES",
+                        "MOVIMENTAÇÕES REALIZADAS:<br>"
+                      + "- Entrada Produto A<br>"
+                      + "- Saída Produto B")
+                    );
+                }
+            }
+        }
+
         }
     }
 
@@ -315,4 +351,4 @@ public class Principal {
              + conteudo
              + "</div></div></html>";
     }
-} 
+}

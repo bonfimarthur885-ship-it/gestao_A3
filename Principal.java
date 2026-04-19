@@ -36,7 +36,7 @@ public class Principal {
             if (MENUCADASTRO == null) break;
             MENUCD = Integer.parseInt(MENUCADASTRO);
 
-            // >>> AQUI COMEÇA A TELA 1.1.1 <
+            // >>> AQUI COMEÇA A TELA 1.1.1 
             if (MENUCD == 1) { //INCLUSÃO
 
                 String continuar = "S"; //controla repetição da tela
@@ -73,7 +73,7 @@ public class Principal {
                 }
             }
 
-            // >>> AQUI COMEÇA A TELA 1.1.2 <
+            // >>> AQUI COMEÇA A TELA 1.1.2 
             if (MENUCD == 2) { //ALTERAÇÃO
 
                 String continuar = "S"; //controla repetição
@@ -110,7 +110,7 @@ public class Principal {
                 }
             }
 
-            // >>> AQUI COMEÇA A TELA 1.1.3 <
+            // >>> AQUI COMEÇA A TELA 1.1.3 
             if (MENUCD == 3) { //CONSULTA
 
                 String continuar = "S"; //controla repetição da tela de consulta
@@ -140,7 +140,7 @@ public class Principal {
                 }
             }
 
-            // >>> AQUI COMEÇA A TELA 1.1.4 <
+            // >>> AQUI COMEÇA A TELA 1.1.4 
             if (MENUCD == 4) { //EXCLUSÃO
 
                 String continuar = "S"; //controla repetição da tela de exclusão
@@ -188,7 +188,7 @@ public class Principal {
             if (MENUMOVIMENTACAO == null) break;
             MENUMV = Integer.parseInt(MENUMOVIMENTACAO);
 
-            // >>> AQUI COMEÇA A TELA 1.2.1 <
+            // >>> AQUI COMEÇA A TELA 1.2.1 
             if (MENUMV == 1) { //ENTRADA DE PRODUTO
 
                 String continuar = "S"; //controla repetição da tela de entrada
@@ -234,13 +234,59 @@ public class Principal {
                 }
             }
 
+            // >>> AQUI COMEÇA A TELA 1.2.2 <
+            if (MENUMV == 2) { //SAÍDA DE PRODUTO
+
+                String continuar = "S"; //controla repetição da tela de saída
+
+                while (continuar.equalsIgnoreCase("S")) {
+
+                    //campos de entrada
+                    String produto = JOptionPane.showInputDialog(layout("MOVIMENTAÇÃO - SAÍDA DE PRODUTO", "PRODUTO:"));
+
+                    //quantidade atual do produto no estoque
+                    String qtdeAtualStr = JOptionPane.showInputDialog(layout("MOVIMENTAÇÃO - SAÍDA DE PRODUTO", "QTDE ATUAL:"));
+
+                    //quantidade que está saindo do estoque
+                    String qtdeSaidaStr = JOptionPane.showInputDialog(layout("MOVIMENTAÇÃO - SAÍDA DE PRODUTO", "QTDE SAÍDA:"));
+
+                    //calcula a quantidade final subtraindo saída da atual
+                    int qtdeAtual = Integer.parseInt(qtdeAtualStr);
+                    int qtdeSaida = Integer.parseInt(qtdeSaidaStr);
+                    int qtdeFinal = qtdeAtual - qtdeSaida;
+
+                    //exibe confirmação com os dados preenchidos e a quantidade final calculada
+                    String confirmacao = JOptionPane.showInputDialog(
+                        layout("MOVIMENTAÇÃO - SAÍDA DE PRODUTO",
+                        "PRODUTO     : " + produto + "<br>"
+                      + "QTDE ATUAL  : " + qtdeAtual + "<br>"
+                      + "QTDE SAÍDA  : " + qtdeSaida + "<br>"
+                      + "QTDE FINAL  : " + qtdeFinal + "<br><br>"
+                      + "CONFIRMA SAÍDA (S/N)?")
+                    );
+
+                    if (confirmacao != null && confirmacao.equalsIgnoreCase("S")) {
+                        JOptionPane.showMessageDialog(null, layout("SISTEMA", "Saída registrada com sucesso!"));
+                    } else {
+                        JOptionPane.showMessageDialog(null, layout("SISTEMA", "Saída cancelada."));
+                    }
+
+                    //nova saída - reabre a tela 1.2.2 se "S", retorna para tela 1.2 se "N"
+                    continuar = JOptionPane.showInputDialog(layout("SAÍDA", "NOVA SAÍDA (S/N)?"));
+
+                    if (continuar == null || continuar.equalsIgnoreCase("N")) {
+                        break; //volta pro menu movimentação (tela 1.2)
+                    }
+                }
+            }
+
             }
         
         }
         }
     }
 
-    // >>> MÉTODO PADRÃO DE LAYOUT (PADRONIZA TUDO) <
+    // >>> MÉTODO PADRÃO DE LAYOUT (PADRONIZA TUDO) 
     // Aumentei para 350px para ficar mais parecido com a sua imagem
     public static String layout(String titulo, String conteudo) {
         return "<html><div style='width:350px; text-align:center; font-family: sans-serif;'>"

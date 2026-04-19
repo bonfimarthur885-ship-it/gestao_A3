@@ -36,7 +36,7 @@ public class Principal {
             if (MENUCADASTRO == null) break;
             MENUCD = Integer.parseInt(MENUCADASTRO);
 
-            // >>> AQUI COMEÇA A TELA 1.1.1 <<<
+            // >>> AQUI COMEÇA A TELA 1.1.1 <
             if (MENUCD == 1) { //INCLUSÃO
 
                 String continuar = "S"; //controla repetição da tela
@@ -73,7 +73,7 @@ public class Principal {
                 }
             }
 
-            // >>> AQUI COMEÇA A TELA 1.1.2 <<<
+            // >>> AQUI COMEÇA A TELA 1.1.2 <
             if (MENUCD == 2) { //ALTERAÇÃO
 
                 String continuar = "S"; //controla repetição
@@ -110,7 +110,7 @@ public class Principal {
                 }
             }
 
-            // >>> AQUI COMEÇA A TELA 1.1.3 <<<
+            // >>> AQUI COMEÇA A TELA 1.1.3 <
             if (MENUCD == 3) { //CONSULTA
 
                 String continuar = "S"; //controla repetição da tela de consulta
@@ -140,7 +140,7 @@ public class Principal {
                 }
             }
 
-            // >>> AQUI COMEÇA A TELA 1.1.4 <<<
+            // >>> AQUI COMEÇA A TELA 1.1.4 <
             if (MENUCD == 4) { //EXCLUSÃO
 
                 String continuar = "S"; //controla repetição da tela de exclusão
@@ -187,13 +187,60 @@ public class Principal {
             );
             if (MENUMOVIMENTACAO == null) break;
             MENUMV = Integer.parseInt(MENUMOVIMENTACAO);
+
+            // >>> AQUI COMEÇA A TELA 1.2.1 <
+            if (MENUMV == 1) { //ENTRADA DE PRODUTO
+
+                String continuar = "S"; //controla repetição da tela de entrada
+
+                while (continuar.equalsIgnoreCase("S")) {
+
+                    //campos de entrada
+                    String produto = JOptionPane.showInputDialog(layout("MOVIMENTAÇÃO - ENTRADA DE PRODUTO", "PRODUTO:"));
+                    
+                    //quantidade atual do produto no estoque
+                    String qtdeAtualStr = JOptionPane.showInputDialog(layout("MOVIMENTAÇÃO - ENTRADA DE PRODUTO", "QTDE ATUAL:"));
+                    
+                    //quantidade que está entrando no estoque
+                    String qtdeEntradaStr = JOptionPane.showInputDialog(layout("MOVIMENTAÇÃO - ENTRADA DE PRODUTO", "QTDE ENTRADA:"));
+
+                    //calcula a quantidade final somando atual + entrada
+                    int qtdeAtual = Integer.parseInt(qtdeAtualStr);
+                    int qtdeEntrada = Integer.parseInt(qtdeEntradaStr);
+                    int qtdeFinal = qtdeAtual + qtdeEntrada;
+
+                    //exibe confirmação com os dados preenchidos e a quantidade final calculada
+                    String confirmacao = JOptionPane.showInputDialog(
+                        layout("MOVIMENTAÇÃO - ENTRADA DE PRODUTO",
+                        "PRODUTO      : " + produto + "<br>"
+                      + "QTDE ATUAL   : " + qtdeAtual + "<br>"
+                      + "QTDE ENTRADA : " + qtdeEntrada + "<br>"
+                      + "QTDE FINAL   : " + qtdeFinal + "<br><br>"
+                      + "CONFIRMA ENTRADA (S/N)?")
+                    );
+
+                    if (confirmacao != null && confirmacao.equalsIgnoreCase("S")) {
+                        JOptionPane.showMessageDialog(null, layout("SISTEMA", "Entrada registrada com sucesso!"));
+                    } else {
+                        JOptionPane.showMessageDialog(null, layout("SISTEMA", "Entrada cancelada."));
+                    }
+
+                    //nova entrada - reabre a tela 1.2.1 se "S", retorna para tela 1.2 se "N"
+                    continuar = JOptionPane.showInputDialog(layout("ENTRADA", "NOVA ENTRADA (S/N)?"));
+
+                    if (continuar == null || continuar.equalsIgnoreCase("N")) {
+                        break; //volta pro menu movimentação (tela 1.2)
+                    }
+                }
+            }
+
             }
         
         }
         }
     }
 
-    // >>> MÉTODO PADRÃO DE LAYOUT (PADRONIZA TUDO) <<<
+    // >>> MÉTODO PADRÃO DE LAYOUT (PADRONIZA TUDO) <
     // Aumentei para 350px para ficar mais parecido com a sua imagem
     public static String layout(String titulo, String conteudo) {
         return "<html><div style='width:350px; text-align:center; font-family: sans-serif;'>"

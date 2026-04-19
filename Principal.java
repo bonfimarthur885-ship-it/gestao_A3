@@ -101,11 +101,10 @@ public class Principal {
                         JOptionPane.showMessageDialog(null, layout("SISTEMA", "Alteração cancelada."));
                     }
 
-                    //nova alteração
                     continuar = JOptionPane.showInputDialog(layout("ALTERAÇÃO", "NOVA ALTERAÇÃO (S/N)?"));
 
                     if (continuar == null || continuar.equalsIgnoreCase("N")) {
-                        break; //volta pro menu cadastro
+                        break;
                     }
                 }
             }
@@ -113,13 +112,12 @@ public class Principal {
             // >>> AQUI COMEÇA A TELA 1.1.3 
             if (MENUCD == 3) { //CONSULTA
 
-                String continuar = "S"; //controla repetição da tela de consulta
+                String continuar = "S";
 
                 while (continuar.equalsIgnoreCase("S")) {
 
-                    //campos de entrada
                     String nome = JOptionPane.showInputDialog(layout("CONSULTA DE PRODUTO", "NOME:"));
-                    String preco = "10.00"; // Exemplo de valor que viria de uma busca
+                    String preco = "10.00";
                     String unidade = "UN";
                     String quantidade = "50";
 
@@ -131,11 +129,10 @@ public class Principal {
                       + "QUANTIDADE : " + quantidade)
                     );
 
-                    //nova consulta
                     continuar = JOptionPane.showInputDialog(layout("CONSULTA", "NOVA CONSULTA (S/N)?"));
 
                     if (continuar == null || continuar.equalsIgnoreCase("N")) {
-                        break; //volta pro menu cadastro (tela 1.1)
+                        break;
                     }
                 }
             }
@@ -143,11 +140,10 @@ public class Principal {
             // >>> AQUI COMEÇA A TELA 1.1.4 
             if (MENUCD == 4) { //EXCLUSÃO
 
-                String continuar = "S"; //controla repetição da tela de exclusão
+                String continuar = "S";
 
                 while (continuar.equalsIgnoreCase("S")) {
 
-                    //campos de entrada
                     String nome = JOptionPane.showInputDialog(layout("EXCLUSÃO DE PRODUTO", "NOME DO PRODUTO A EXCLUIR:"));
                     
                     String confirmacao = JOptionPane.showInputDialog(
@@ -162,11 +158,10 @@ public class Principal {
                         JOptionPane.showMessageDialog(null, layout("SISTEMA", "Exclusão cancelada."));
                     }
 
-                    //nova exclusão
                     continuar = JOptionPane.showInputDialog(layout("EXCLUSÃO", "NOVA EXCLUSÃO (S/N)?"));
 
                     if (continuar == null || continuar.equalsIgnoreCase("N")) {
-                        break; //volta pro menu cadastro (tela 1.1)
+                        break;
                     }
                 }
             }
@@ -174,10 +169,10 @@ public class Principal {
             }
         }
 
-        if (MENUPP == 2) { //é a mesma lógica de antes daqui pra frente
-            
+        if (MENUPP == 2) {
+
             int MENUMV = -1;
-            
+
             while (MENUMV != 0) {
                 String MENUMOVIMENTACAO = JOptionPane.showInputDialog(
                 layout("MOVIMENTAÇÃO",
@@ -188,28 +183,20 @@ public class Principal {
             if (MENUMOVIMENTACAO == null) break;
             MENUMV = Integer.parseInt(MENUMOVIMENTACAO);
 
-            // >>> AQUI COMEÇA A TELA 1.2.1 
-            if (MENUMV == 1) { //ENTRADA DE PRODUTO
+            if (MENUMV == 1) {
 
-                String continuar = "S"; //controla repetição da tela de entrada
+                String continuar = "S";
 
                 while (continuar.equalsIgnoreCase("S")) {
 
-                    //campos de entrada
                     String produto = JOptionPane.showInputDialog(layout("MOVIMENTAÇÃO - ENTRADA DE PRODUTO", "PRODUTO:"));
-                    
-                    //quantidade atual do produto no estoque
                     String qtdeAtualStr = JOptionPane.showInputDialog(layout("MOVIMENTAÇÃO - ENTRADA DE PRODUTO", "QTDE ATUAL:"));
-                    
-                    //quantidade que está entrando no estoque
                     String qtdeEntradaStr = JOptionPane.showInputDialog(layout("MOVIMENTAÇÃO - ENTRADA DE PRODUTO", "QTDE ENTRADA:"));
 
-                    //calcula a quantidade final somando atual + entrada
                     int qtdeAtual = Integer.parseInt(qtdeAtualStr);
                     int qtdeEntrada = Integer.parseInt(qtdeEntradaStr);
                     int qtdeFinal = qtdeAtual + qtdeEntrada;
 
-                    //exibe confirmação com os dados preenchidos e a quantidade final calculada
                     String confirmacao = JOptionPane.showInputDialog(
                         layout("MOVIMENTAÇÃO - ENTRADA DE PRODUTO",
                         "PRODUTO      : " + produto + "<br>"
@@ -225,37 +212,28 @@ public class Principal {
                         JOptionPane.showMessageDialog(null, layout("SISTEMA", "Entrada cancelada."));
                     }
 
-                    //nova entrada - reabre a tela 1.2.1 se "S", retorna para tela 1.2 se "N"
                     continuar = JOptionPane.showInputDialog(layout("ENTRADA", "NOVA ENTRADA (S/N)?"));
 
                     if (continuar == null || continuar.equalsIgnoreCase("N")) {
-                        break; //volta pro menu movimentação (tela 1.2)
+                        break;
                     }
                 }
             }
 
-            // >>> AQUI COMEÇA A TELA 1.2.2 <
-            if (MENUMV == 2) { //SAÍDA DE PRODUTO
+            if (MENUMV == 2) {
 
-                String continuar = "S"; //controla repetição da tela de saída
+                String continuar = "S";
 
                 while (continuar.equalsIgnoreCase("S")) {
 
-                    //campos de entrada
                     String produto = JOptionPane.showInputDialog(layout("MOVIMENTAÇÃO - SAÍDA DE PRODUTO", "PRODUTO:"));
-
-                    //quantidade atual do produto no estoque
                     String qtdeAtualStr = JOptionPane.showInputDialog(layout("MOVIMENTAÇÃO - SAÍDA DE PRODUTO", "QTDE ATUAL:"));
-
-                    //quantidade que está saindo do estoque
                     String qtdeSaidaStr = JOptionPane.showInputDialog(layout("MOVIMENTAÇÃO - SAÍDA DE PRODUTO", "QTDE SAÍDA:"));
 
-                    //calcula a quantidade final subtraindo saída da atual
                     int qtdeAtual = Integer.parseInt(qtdeAtualStr);
                     int qtdeSaida = Integer.parseInt(qtdeSaidaStr);
                     int qtdeFinal = qtdeAtual - qtdeSaida;
 
-                    //exibe confirmação com os dados preenchidos e a quantidade final calculada
                     String confirmacao = JOptionPane.showInputDialog(
                         layout("MOVIMENTAÇÃO - SAÍDA DE PRODUTO",
                         "PRODUTO     : " + produto + "<br>"
@@ -271,23 +249,63 @@ public class Principal {
                         JOptionPane.showMessageDialog(null, layout("SISTEMA", "Saída cancelada."));
                     }
 
-                    //nova saída - reabre a tela 1.2.2 se "S", retorna para tela 1.2 se "N"
                     continuar = JOptionPane.showInputDialog(layout("SAÍDA", "NOVA SAÍDA (S/N)?"));
 
                     if (continuar == null || continuar.equalsIgnoreCase("N")) {
-                        break; //volta pro menu movimentação (tela 1.2)
+                        break;
                     }
                 }
             }
 
             }
-        
         }
+
+        // >>> AQUI COMEÇA A TELA 1.3
+        if (MENUPP == 3) { //REAJUSTE DE PREÇOS
+
+            String continuar = "S"; //controla repetição da tela
+
+            while (continuar.equalsIgnoreCase("S")) {
+
+                String nome = JOptionPane.showInputDialog(layout("REAJUSTE DE PREÇOS", "NOME DO PRODUTO:"));
+
+                String unidade = "UN";
+                String precoAtual = "10.00";
+
+                String novoPreco = JOptionPane.showInputDialog(
+                    layout("REAJUSTE DE PREÇOS",
+                    "UNIDADE      : " + unidade + "<br>"
+                  + "PREÇO ATUAL  : " + precoAtual + "<br>"
+                  + "NOVO PREÇO:")
+                );
+
+                String confirmacao = JOptionPane.showInputDialog(
+                    layout("REAJUSTE DE PREÇOS",
+                    "PRODUTO      : " + nome + "<br>"
+                  + "UNIDADE      : " + unidade + "<br>"
+                  + "PREÇO ATUAL  : " + precoAtual + "<br>"
+                  + "NOVO PREÇO   : " + novoPreco + "<br><br>"
+                  + "CONFIRMA REAJUSTE (S/N)?")
+                );
+
+                if (confirmacao != null && confirmacao.equalsIgnoreCase("S")) {
+                    JOptionPane.showMessageDialog(null, layout("SISTEMA", "Reajuste realizado com sucesso!"));
+                } else {
+                    JOptionPane.showMessageDialog(null, layout("SISTEMA", "Reajuste cancelado."));
+                }
+
+                continuar = JOptionPane.showInputDialog(layout("REAJUSTE", "NOVO REAJUSTE (S/N)?"));
+
+                if (continuar == null || continuar.equalsIgnoreCase("N")) {
+                    break;
+                }
+            }
+        }
+
         }
     }
 
     // >>> MÉTODO PADRÃO DE LAYOUT (PADRONIZA TUDO) 
-    // Aumentei para 350px para ficar mais parecido com a sua imagem
     public static String layout(String titulo, String conteudo) {
         return "<html><div style='width:350px; text-align:center; font-family: sans-serif;'>"
              + "GESTÃO LTDA<br>"
@@ -297,4 +315,4 @@ public class Principal {
              + conteudo
              + "</div></div></html>";
     }
-}
+} 

@@ -290,7 +290,7 @@ public class Principal {
     // Aumentei para 350px para ficar mais parecido com a sua imagem
     public static String layout(String titulo, String conteudo) {
         return "<html><div style='width:350px; text-align:center; font-family: sans-serif;'>"
-             + "SEX ON THE BAR LTDA<br>"
+             + "GESTÃO LTDA<br>"
              + "SISTEMA DE CONTROLE DE ESTOQUE<br><br>"
              + "<b>" + titulo + "</b><br><br>"
              + "<div style='text-align:left;'>"

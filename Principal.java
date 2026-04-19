@@ -8,70 +8,200 @@ public class Principal {
         while (MENUPP != 0) { //isso faz o loop continuar rodando enquanto o input não for 0, ou seja, 0 = finalizar loop.
         
         String MENUPRINCIPAL = JOptionPane.showInputDialog(
-                "<html><div style='text-align: center;'>" //isso é só pra centralizar o texto usando html básico.
-                + "SEX ON THE BAR LTDA<br>" //<br> se refere à *break* line, quebra de linha, que faz ir bra linha de baixo. É o mesmo que \n em java.
-                + "SISTEMA DE CONTROLE DE ESTOQUE<br><br>"
-                + "MENU PRINCIPAL"
-                + "<div><br>"   //o </div> significa que é o fim dos textos
-                        
-                + "<div style='text-align: justify;'>" //isso muda a formatação do texto para Justificar ao invés de Centralizar.
-                + "1 - CADASTRO DE PRODUTO<br>"
-                + "2 - MOVIMENTAÇÃO<br>"
-                + "3 - REAJUSTE DE PREÇOS<br>"
-                + "4 - RELATÓRIOS<br>"
-                + "0 - FINALIZAR<br><br>"
-                + "</div></html>"  //novamente fim da divisão e quando iniciar e finalizar uma programação em html, precisa ter <html> no ínicio e fim.
+                layout("MENU PRINCIPAL",
+                "1 - CADASTRO DE PRODUTO<br>"
+              + "2 - MOVIMENTAÇÃO<br>"
+              + "3 - REAJUSTE DE PREÇOS<br>"
+              + "4 - RELATÓRIOS<br>"
+              + "0 - FINALIZAR")
              );
         
-        MENUPP = Integer.parseInt(MENUPRINCIPAL); //isso é para transformar o input do usuário que é uma string para um numero inteiro, ou seja, "1" vira 1
+        if (MENUPRINCIPAL == null) break; // Evita erro se fechar a janela no X
+        MENUPP = Integer.parseInt(MENUPRINCIPAL);
         
-        if (MENUPP == 1) { //condição para caso o input seja 1, levandopara o menu de cadastro
+        if (MENUPP == 1) { //condição para caso o input seja 1, levando para o menu de cadastro
             
-            int MENUCD = -1; //mesma coisa de antes, atribui um valor para a varivael poder ser usada no loop
+            int MENUCD = -1;
             
-            while (MENUCD != 0) { //continua na mesma lógica anterior, faz com que 0 = finalizar, nesse caso o finaliza ESSE loop (menu de cadastro) e volta para o loop anterior (menu principal).
+            while (MENUCD != 0) {
             String MENUCADASTRO = JOptionPane.showInputDialog(
-                "<html><div style='text-align: center;'>"
-                + "SEX ON THE BAR LTDA<br>"
-                + "SISTEMA DE CONTROLE DE ESTOQUE<br><br>"
-                + "CADASTRO DE PRODUTOS"
-                + "</div><br>"
-                        
-                + "<div style='text-align: justify;'>"
-                + "1 - INCLUSÃO<br>"
-                + "2 - ALTERAÇÃO<br>"
-                + "3 - CONSULTA<br>"
-                + "4 - EXCLUSÃO<br>"
-                + "0 - RETORNAR<br><br>"
-                + "</div></html>"  
+                layout("CADASTRO DE PRODUTOS",
+                "1 - INCLUSÃO<br>"
+              + "2 - ALTERAÇÃO<br>"
+              + "3 - CONSULTA<br>"
+              + "4 - EXCLUSÃO<br>"
+              + "0 - RETORNAR")
             );
+
+            if (MENUCADASTRO == null) break;
             MENUCD = Integer.parseInt(MENUCADASTRO);
+
+            // >>> AQUI COMEÇA A TELA 1.1.1 <<<
+            if (MENUCD == 1) { //INCLUSÃO
+
+                String continuar = "S"; //controla repetição da tela
+
+                while (continuar.equalsIgnoreCase("S")) {
+
+                    //campos de entrada - Agora usando o layout para manter o tamanho
+                    String nome = JOptionPane.showInputDialog(layout("INCLUSÃO DE PRODUTO", "NOME:"));
+                    String preco = JOptionPane.showInputDialog(layout("INCLUSÃO DE PRODUTO", "PREÇO:"));
+                    String unidade = JOptionPane.showInputDialog(layout("INCLUSÃO DE PRODUTO", "UNIDADE:"));
+                    String quantidade = JOptionPane.showInputDialog(layout("INCLUSÃO DE PRODUTO", "QUANTIDADE:"));
+
+                    String confirmacao = JOptionPane.showInputDialog(
+                        layout("INCLUSÃO DE PRODUTO",
+                        "NOME        : " + nome + "<br>"
+                      + "PREÇO       : " + preco + "<br>"
+                      + "UNIDADE     : " + unidade + "<br>"
+                      + "QUANTIDADE : " + quantidade + "<br><br>"
+                      + "CONFIRMA INCLUSÃO (S/N)?")
+                    );
+
+                    if (confirmacao != null && confirmacao.equalsIgnoreCase("S")) {
+                        JOptionPane.showMessageDialog(null, layout("SISTEMA", "Produto cadastrado com sucesso!"));
+                    } else {
+                        JOptionPane.showMessageDialog(null, layout("SISTEMA", "Cadastro cancelado."));
+                    }
+
+                    //nova alteração
+                    continuar = JOptionPane.showInputDialog(layout("INCLUSÃO", "NOVA INCLUSÃO (S/N)?"));
+
+                    if (continuar == null || continuar.equalsIgnoreCase("N")) {
+                        break; //volta pro menu cadastro
+                    }
+                }
+            }
+
+            // >>> AQUI COMEÇA A TELA 1.1.2 <<<
+            if (MENUCD == 2) { //ALTERAÇÃO
+
+                String continuar = "S"; //controla repetição
+
+                while (continuar.equalsIgnoreCase("S")) {
+
+                    //campos de entrada
+                    String nome = JOptionPane.showInputDialog(layout("ALTERAÇÃO DE PRODUTO", "NOME:"));
+                    String preco = JOptionPane.showInputDialog(layout("ALTERAÇÃO DE PRODUTO", "PREÇO:"));
+                    String unidade = JOptionPane.showInputDialog(layout("ALTERAÇÃO DE PRODUTO", "UNIDADE:"));
+                    String quantidade = JOptionPane.showInputDialog(layout("ALTERAÇÃO DE PRODUTO", "QUANTIDADE:"));
+
+                    String confirmacao = JOptionPane.showInputDialog(
+                        layout("ALTERAÇÃO DE PRODUTO",
+                        "NOME        : " + nome + "<br>"
+                      + "PREÇO       : " + preco + "<br>"
+                      + "UNIDADE     : " + unidade + "<br>"
+                      + "QUANTIDADE : " + quantidade + "<br><br>"
+                      + "CONFIRMA ALTERAÇÃO (S/N)?")
+                    );
+
+                    if (confirmacao != null && confirmacao.equalsIgnoreCase("S")) {
+                        JOptionPane.showMessageDialog(null, layout("SISTEMA", "Produto alterado com sucesso!"));
+                    } else {
+                        JOptionPane.showMessageDialog(null, layout("SISTEMA", "Alteração cancelada."));
+                    }
+
+                    //nova alteração
+                    continuar = JOptionPane.showInputDialog(layout("ALTERAÇÃO", "NOVA ALTERAÇÃO (S/N)?"));
+
+                    if (continuar == null || continuar.equalsIgnoreCase("N")) {
+                        break; //volta pro menu cadastro
+                    }
+                }
+            }
+
+            // >>> AQUI COMEÇA A TELA 1.1.3 <<<
+            if (MENUCD == 3) { //CONSULTA
+
+                String continuar = "S"; //controla repetição da tela de consulta
+
+                while (continuar.equalsIgnoreCase("S")) {
+
+                    //campos de entrada
+                    String nome = JOptionPane.showInputDialog(layout("CONSULTA DE PRODUTO", "NOME:"));
+                    String preco = "10.00"; // Exemplo de valor que viria de uma busca
+                    String unidade = "UN";
+                    String quantidade = "50";
+
+                    JOptionPane.showMessageDialog(null,
+                        layout("CONSULTA DE PRODUTO",
+                        "NOME        : " + nome + "<br>"
+                      + "PREÇO       : " + preco + "<br>"
+                      + "UNIDADE     : " + unidade + "<br>"
+                      + "QUANTIDADE : " + quantidade)
+                    );
+
+                    //nova consulta
+                    continuar = JOptionPane.showInputDialog(layout("CONSULTA", "NOVA CONSULTA (S/N)?"));
+
+                    if (continuar == null || continuar.equalsIgnoreCase("N")) {
+                        break; //volta pro menu cadastro (tela 1.1)
+                    }
+                }
+            }
+
+            // >>> AQUI COMEÇA A TELA 1.1.4 <<<
+            if (MENUCD == 4) { //EXCLUSÃO
+
+                String continuar = "S"; //controla repetição da tela de exclusão
+
+                while (continuar.equalsIgnoreCase("S")) {
+
+                    //campos de entrada
+                    String nome = JOptionPane.showInputDialog(layout("EXCLUSÃO DE PRODUTO", "NOME DO PRODUTO A EXCLUIR:"));
+                    
+                    String confirmacao = JOptionPane.showInputDialog(
+                        layout("EXCLUSÃO DE PRODUTO",
+                        "NOME        : " + nome + "<br><br>"
+                      + "CONFIRMA EXCLUSÃO (S/N)?")
+                    );
+
+                    if (confirmacao != null && confirmacao.equalsIgnoreCase("S")) {
+                        JOptionPane.showMessageDialog(null, layout("SISTEMA", "Produto excluído com sucesso!"));
+                    } else {
+                        JOptionPane.showMessageDialog(null, layout("SISTEMA", "Exclusão cancelada."));
+                    }
+
+                    //nova exclusão
+                    continuar = JOptionPane.showInputDialog(layout("EXCLUSÃO", "NOVA EXCLUSÃO (S/N)?"));
+
+                    if (continuar == null || continuar.equalsIgnoreCase("N")) {
+                        break; //volta pro menu cadastro (tela 1.1)
+                    }
+                }
+            }
+
             }
         }
+
         if (MENUPP == 2) { //é a mesma lógica de antes daqui pra frente
             
             int MENUMV = -1;
             
             while (MENUMV != 0) {
-                String MENUMOVIMENTAÇÃO = JOptionPane.showInputDialog(
-                "<html><div style='text-align: center;'>"
-                + "SEX ON THE BAR LTDA<br>"
-                + "SISTEMA DE CONTROLE DE ESTOQUE<br><br>"
-                + "MOVIMENTAÇÃO"
-                + "</div><br>"
-                        
-                + "<div style='text-align: justify;'>"
-                + "1 - ENTRADA<br>"
-                + "2 - SAIDA<br>"
-                + "0 - RETORNAR<br><br>"
-                + "</div></html>"  
+                String MENUMOVIMENTACAO = JOptionPane.showInputDialog(
+                layout("MOVIMENTAÇÃO",
+                "1 - ENTRADA<br>"
+              + "2 - SAIDA<br>"
+              + "0 - RETORNAR")
             );
-            MENUMV = Integer.parseInt(MENUMOVIMENTAÇÃO);
+            if (MENUMOVIMENTACAO == null) break;
+            MENUMV = Integer.parseInt(MENUMOVIMENTACAO);
             }
         
         }
         }
     }
-}
 
-//até então só está funcionando as funções de ir e voltar do menu principal para o menu de cadastro e movimentação que eu só fiz pra experimentar e aprender.
+    // >>> MÉTODO PADRÃO DE LAYOUT (PADRONIZA TUDO) <<<
+    // Aumentei para 350px para ficar mais parecido com a sua imagem
+    public static String layout(String titulo, String conteudo) {
+        return "<html><div style='width:350px; text-align:center; font-family: sans-serif;'>"
+             + "SEX ON THE BAR LTDA<br>"
+             + "SISTEMA DE CONTROLE DE ESTOQUE<br><br>"
+             + "<b>" + titulo + "</b><br><br>"
+             + "<div style='text-align:left;'>"
+             + conteudo
+             + "</div></div></html>";
+    }
+}
